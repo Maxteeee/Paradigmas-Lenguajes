@@ -1,0 +1,1 @@
+Aca se encontraran los 3 directorios, uno por paradigma, cada uno con su teoria + ejercitacion necesaria para los parciales.
