@@ -1,4 +1,4 @@
-Para correr el interprete en consola, me paro en la carpeta de paradigmas y hago: src/tp1.pl 
+Para correr el interprete en consola, me paro en la carpeta de paradigmas y hago: src/(archivo).pl 
 
 Para terminar y salir hago: halt.
 
