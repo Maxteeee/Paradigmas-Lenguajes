@@ -31,6 +31,28 @@ Pero no funciona para generar números mayores que 10:
 
 ?- mayorQue10(X).  % ERROR o fallo, porque X no está instanciado para comparar
 
+--------------------------------------------------------
+
+# INVERSIBILIDAD
+
+Que un predicado sea inversible significa que los ARGUMENTOS del mismo pueden usarse tanto de entrada (preguntando especificamente por alguien), como de salida (pongo nomas el nombre de la variable, es decir, una variable libre en 1 arguemtno o en todos sus argumentos etc) y tiene que ser capaz de decirme quienes cumplen 
+
+si tengo un predicado como 
+ProgramaEn(Persona, Lenguaje).
+
+tienen que ser inversible todos sus arguemtnos.
+
+si tengo por ejemplo
+
+programaEn(_, c)
+
+al preguntar
+
+?- programaEn(Persona, C)
+True.
+
+pero no dice QUIENES, por eso ya no es inversible
 
 
+video clase 11 min 11
 

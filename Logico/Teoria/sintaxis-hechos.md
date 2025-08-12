@@ -63,3 +63,23 @@ Ejemplos de consultas:
 
 
 
+
+# Propiedades d prolog
+
+simetrica: xRy entonces yRx
+
+irreflexive: x no se relaciona consigo mismo
+
+# conjuncion
+Es con el ","
+
+colegas (Persona, Colega):=
+ ProgramaEn(Persona, Lenguaje),
+ ProgramaEn(Colega, Lenguaje),
+ Persona \= Colega.
+
+# Disyuncion
+ProgramaEn(mateo, java).
+ProgramaEn(maru, ruby).
+ProgramaEn(mateo, go).
+
