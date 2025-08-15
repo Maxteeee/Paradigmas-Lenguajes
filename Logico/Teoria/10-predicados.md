@@ -4,12 +4,28 @@
 
 Evalúa una expresión y unifica con el resultado.
 
-NOTA: el lado DERECHO debe ser evaluable
+NOTA: el lado DERECHO debe ser evaluable, osea una expresion numerica concreta
 
 ```prolog
 ?- X is 2+3.
 X = 5.
 ```
+
+**Error:**
+
+```prolog
+?- 5 is X + 2.
+```
+
+X no esta instanciada → Prolog no resuelve ecuaciones al reves solo evalua expresiones ya instanciadas
+
+**Comparadores aritmeticos**
+>= → Mayor igual
+<= → Menor igual
+=:= → Igualdad 
+=\= → Distinto 
+
+Estos 2 ultimos, los explicaremos abajo
 
 ## =/= y =:=
 
