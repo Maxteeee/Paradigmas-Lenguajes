@@ -199,6 +199,7 @@ X = b ;
 X = c.
 ```
 
+Si la lista que le pasamos es vacia, como no tiene elementos para comprar member tira falso siempre. Poruqe no hay elementos para unificar con X
 ## max_member/2
 
 - max_member(+Lista, -Max).
@@ -283,6 +284,9 @@ true. % todos los hombres tienen bigote
    forall(es_hombre(X), tiene_bigote(X)).
 false. % Pedro rompió la regla
 ```
+
+A diferencia del member, si el forall en la condicion ponemos una lista vacia o un predicado donde NINGUNO cumple. Como no hay elementos que contradigan la condicion sera siempre verdadero.
+Recordar la tabla de valores, si el antecedente era falso el condicional era verdadero.
 
 ## findall(Formato, Consulta, Lista)
 
