@@ -1,6 +1,5 @@
-CLASE 4 GITHUB, seuimos con el ejemplo de la granja
+En Wollok, los conjuntos de objetos se llaman colecciones. Son objetos con referencias a otros objetos y pueden recibir mensajes como cualquier otro objeto. Esto permite trabajar de forma declarativa con abstracciones de alto nivel.
 
-SON BASICAMENTE LOS PREDICADOS / FUNCIONES DE HASKELL Y COSAS DE LA GUIA DE LENGUAJES. Les puse predicados porque me acostumbre asi con LOGICO
 # Modelar conjuntos
 
 - A los conjuntos les decimos **COLECCIONES**
@@ -43,6 +42,10 @@ Devuelve el elemento en la posición dada (empieza en 0).
 ```wollok
 var letras = list("a", "b", "c")
 console.print(letras.get(1)) // "b"
+
+method productoEn(pos) {
+	return productos.get(pos)
+}
 ```
 
 ---
@@ -53,6 +56,11 @@ Devuelve una nueva lista con los primeros `n` elementos.
 ```wollok
 var nums = list(10, 20, 30, 40)
 console.print(nums.take(2)) // [10, 20]
+
+method primerosProductos(n) {
+	return productos.take(n)
+}
+
 ```
 
 ---
@@ -64,6 +72,11 @@ Devuelve una nueva lista sin los primeros `n` elementos.
 ```wollok
 var nums = list(10, 20, 30, 40)
 console.print(nums.drop(2)) // [30, 40]
+
+method productosRestantes(n) {
+	return productos.drop(n)
+}
+
 ```
 
 ---
@@ -76,6 +89,15 @@ Devuelve el primer elemento.
 var nums = list(5, 6, 7)
 console.print(nums.head)  // 5
 console.print(nums.first) // 5
+
+method primerProducto() {
+	return productos.head
+}
+
+method primerProductoAlt() {
+	return productos.first
+}
+
 ```
 
 ---
@@ -87,6 +109,11 @@ Devuelve el último elemento.
 ```wollok
 var nums = list(5, 6, 7)
 console.print(nums.last) // 7
+
+method ultimoProducto() {
+	return productos.last
+}
+
 ```
 
 ---
@@ -98,6 +125,11 @@ Devuelve una nueva lista con los elementos en orden inverso.
 ```wollok
 var nums = list(1, 2, 3)
 console.print(nums.reverse) // [3, 2, 1]
+
+method productosInvertidos() {
+	return productos.reverse
+}
+
 ```
 ---
 ## Operaciones sobre sets
@@ -111,6 +143,11 @@ Devuelve un nuevo set con los elementos de ambos sets, sin duplicados.
 var a = set(1, 2)
 var b = set(2, 3)
 console.print(a.union(b)) // Set(1, 2, 3)
+
+method unionConOtroSet(otroSet) {
+	return ids.union(otroSet)
+}
+
 ```
 
 ---
@@ -123,6 +160,11 @@ Devuelve un nuevo set con los elementos comunes a ambos sets.
 var a = set(1, 2)
 var b = set(2, 3)
 console.print(a.intersection(b)) // Set(2)
+
+method interseccionConOtroSet(otroSet) {
+	return ids.intersection(otroSet)
+}
+
 ```
 
 ## Operaciones sobre listas y sets
@@ -136,6 +178,11 @@ Devuelve la cantidad de elementos en la colección.
 ```wollok
 var numeros = list(1, 2, 3)
 console.print(numeros.size) // 3
+
+method cantidadElementos() {
+	return productos.size
+}
+
 ```
 
 ---
@@ -147,6 +194,11 @@ Retorna `true` si la colección está vacía.
 ```wollok
 var vacia = list()
 console.print(vacia.isEmpty) // true
+
+method estaVacio() {
+	return productos.isEmpty()
+}
+
 ```
 ---
 ### `contains(elemento)`
@@ -156,6 +208,11 @@ Retorna `true` si el elemento está en la colección.
 ```wollok
 var letras = list("a", "b", "c")
 console.print(letras.contains("b")) // true
+
+method contieneProducto(p) {
+	return productos.contains(p)
+}
+
 ```
 
 ---
@@ -167,6 +224,11 @@ Devuelve el valor máximo de la colección.
 ```wollok
 var nums = list(10, 30, 20)
 console.print(nums.max) // 30
+
+method valorMaximo() {
+	return productos.max
+}
+
 ```
 
 ---
@@ -178,6 +240,11 @@ Devuelve el valor mínimo de la colección.
 ```wollok
 var nums = list(10, 30, 20)
 console.print(nums.min) // 10
+
+method valorMinimo() {
+	return productos.min
+}
+
 ```
 
 ---
@@ -189,6 +256,11 @@ Devuelve la suma de los elementos numéricos.
 ```wollok
 var nums = list(1, 2, 3)
 console.print(nums.sum) // 6
+
+method sumaPrecios() {
+	return productos.sum
+}
+
 ```
 
 ---
@@ -200,6 +272,11 @@ Aplana una colección de colecciones en una sola lista.
 ```wollok
 var lista = list(list(1, 2), list(3, 4))
 console.print(lista.flatten) // [1, 2, 3, 4]
+
+method productosAplanados() {
+	return listaProductos.flatten
+}
+
 ```
 
 ---
@@ -211,6 +288,11 @@ Devuelve un elemento aleatorio de la colección.
 ```wollok
 var letras = list("a", "b", "c")
 console.print(letras.anyone) // Puede imprimir "a", "b" o "c"
+
+method productoAleatorio() {
+	return productos.anyone
+}
+
 ```
 
 ---
@@ -222,6 +304,11 @@ Convierte la colección en un set, eliminando duplicados.
 ```wollok
 var lista = list(1, 2, 2, 3)
 console.print(lista.asSet) // Set(1, 2, 3)
+
+method productosSinDuplicados() {
+	return productos.asSet
+}
+
 ```
 
 ---
@@ -243,6 +330,11 @@ Vamos a ordenarlas por las operaciones para **listas**, luego las de **Set** y l
 var nums = list(1, 2, 3)
 var cuadrados = nums.map( n => n * n )
 console.print(cuadrados) // [1, 4, 9]
+
+method cuadrados() {
+	return numeros.map(n => n * n)
+}
+
 ```
 
 ### `filter(bloqueBool)`
@@ -254,6 +346,11 @@ console.print(cuadrados) // [1, 4, 9]
 var nums = list(1, 2, 3, 4)
 var pares = nums.filter(n => n % 2 == 0)
 console.print(pares) // [2, 4]
+
+method soloPares() {
+	return numeros.filter(n => n % 2 == 0)
+}
+
 ```
 
 ### `flatMap(bloque)`
@@ -265,6 +362,11 @@ console.print(pares) // [2, 4]
 var listas = list(list(1), list(2,3))
 var aplanado = listas.flatMap(l => l.map(x => x*2))
 console.print(aplanado) // [2, 4, 6]
+
+method duplicarYAplanar() {
+	return listas.flatMap(l => l.map(x => x * 2))
+}
+
 ```
 
 ### `sortedBy(bloqueOrdenable)`
@@ -276,6 +378,11 @@ console.print(aplanado) // [2, 4, 6]
 var nums = list(5, 2, 8)
 var ordenados = nums.sortedBy(n => n)
 console.print(ordenados) // [2, 5, 8]
+
+method ordenarNumeros() {
+	return numeros.sortedBy(n => n)
+}
+
 ```
 
 ---
@@ -288,6 +395,11 @@ console.print(ordenados) // [2, 5, 8]
 var s = set(1,2,3)
 var cuadrados = s.map(n => n*n)
 console.print(cuadrados) // Set(1, 4, 9)
+
+method cuadradosSet() {
+	return ids.map(n => n * n)
+}
+
 ```
 
 ### `filter(bloqueBool)`
@@ -296,6 +408,11 @@ console.print(cuadrados) // Set(1, 4, 9)
 var s = set(1,2,3,4)
 var pares = s.filter(n => n%2 == 0)
 console.print(pares) // Set(2,4)
+
+method paresSet() {
+	return ids.filter(n => n % 2 == 0)
+}
+
 ```
 
 ### `any(bloqueBool)`
@@ -306,6 +423,11 @@ console.print(pares) // Set(2,4)
 ```wollok
 var s = set(1,2,3)
 console.print(s.any(n => n > 2)) // true
+
+method algunMayorQue2() {
+	return ids.any(n => n > 2)
+}
+
 ```
 
 ### `all(bloqueBool)`
@@ -316,6 +438,11 @@ console.print(s.any(n => n > 2)) // true
 ```wollok
 var s = set(1,2,3)
 console.print(s.all(n => n > 0)) // true
+
+method todosMayoresQue0() {
+	return ids.all(n => n > 0)
+}
+
 ```
 
 ---
@@ -329,6 +456,11 @@ console.print(s.all(n => n > 0)) // true
 ```wollok
 var nums = list(1,2,3)
 console.print(nums.sum(n => n*2)) // 12
+
+method sumaDoble() {
+	return numeros.sum(n => n * 2)
+}
+
 ```
 
 ### `fold(valorInicial, bloqueDe2)`
@@ -339,6 +471,11 @@ console.print(nums.sum(n => n*2)) // 12
 var nums = list(1,2,3)
 var producto = nums.fold(1, (acc, n) => acc*n)
 console.print(producto) // 6
+
+method productoAcumulado() {
+	return numeros.fold(1, (acc, n) => acc * n)
+}
+
 ```
 
 ### `find(bloqueBool)`
@@ -348,6 +485,11 @@ console.print(producto) // 6
 ```wollok
 var nums = list(1,2,3,4)
 console.print(nums.find(n => n%2 == 0)) // 2
+
+method primerPar() {
+	return numeros.find(n => n % 2 == 0)
+}
+
 ```
 
 ### `findOrElse(bloqueBool, bloqueSinParametros)`
@@ -357,6 +499,11 @@ console.print(nums.find(n => n%2 == 0)) // 2
 ```wollok
 var nums = list(1,3,5)
 console.print(nums.findOrElse(n => n%2 == 0, () => 0)) // 0
+
+method primerParOSino() {
+	return numeros.findOrElse(n => n % 2 == 0, () => 0)
+}
+
 ```
 
 ### `count(bloqueBool)`
@@ -366,6 +513,11 @@ console.print(nums.findOrElse(n => n%2 == 0, () => 0)) // 0
 ```wollok
 var nums = list(1,2,3,4)
 console.print(nums.count(n => n%2 == 0)) // 2
+
+method cantidadPares() {
+	return numeros.count(n => n % 2 == 0)
+}
+
 ```
 
 ### `max(bloqueOrdenable)`
@@ -375,6 +527,11 @@ console.print(nums.count(n => n%2 == 0)) // 2
 ```wollok
 var nums = list(1,5,3)
 console.print(nums.max(n => n)) // 5
+
+method maximo() {
+	return numeros.max(n => n)
+}
+
 ```
 
 ### `min(bloqueOrdenable)`
@@ -384,6 +541,11 @@ console.print(nums.max(n => n)) // 5
 ```wollok
 var nums = list(1,5,3)
 console.print(nums.min(n => n)) // 1
+
+method minimo() {
+	return numeros.min(n => n)
+}
+
 ```
 
 # Mensajes de colecciones con efecto
@@ -404,6 +566,11 @@ Vamos a ordenarlas por tipo de operación, con ejemplo para cada una.
 var lista = list(1, 2)
 lista.add(3)
 console.print(lista) // [1, 2, 3]
+
+method agregarProducto(p) {
+	productos.add(p)
+}
+
 ```
 
 ### `addAll(otraColeccion)`
@@ -415,6 +582,11 @@ var a = list(1,2)
 var b = list(3,4)
 a.addAll(b)
 console.print(a) // [1, 2, 3, 4]
+
+method agregarTodos(otraLista) {
+	productos.addAll(otraLista)
+}
+
 ```
 
 ### `forEach(bloqueConEfectoDe1)`
@@ -426,6 +598,13 @@ var nums = list(1, 2, 3)
 var total = 0
 nums.forEach(n => total = total + n)
 console.print(total) // 6
+
+method sumarPrecios() {
+	var total = 0
+	productos.forEach(p => total = total + p.precio)
+	return total
+}
+
 ```
 
 ### `remove(objeto)`
@@ -436,6 +615,11 @@ console.print(total) // 6
 var lista = list(1, 2, 3)
 lista.remove(2)
 console.print(lista) // [1, 3]
+
+method eliminarProducto(p) {
+	productos.remove(p)
+}
+
 ```
 
 ### `removeAllSuchThat(bloqueBoolDe1)`
@@ -446,6 +630,11 @@ console.print(lista) // [1, 3]
 var nums = list(1,2,3,4)
 nums.removeAllSuchThat(n => n%2 == 0)
 console.print(nums) // [1, 3]
+
+method eliminarPares() {
+	productos.removeAllSuchThat(p => p.precio % 2 == 0)
+}
+
 ```
 
 ### `clear()`
@@ -456,6 +645,11 @@ console.print(nums) // [1, 3]
 var lista = list(1,2,3)
 lista.clear()
 console.print(lista) // []
+
+method vaciarCarrito() {
+	productos.clear()
+}
+
 ```
 
 ### `sortBy(bloqueBoolDe2)`
@@ -466,6 +660,11 @@ console.print(lista) // []
 var nums = list(5,2,8)
 nums.sortBy(n => n)
 console.print(nums) // [2, 5, 8]
+
+method ordenarPorPrecio() {
+	productos.sortBy(p => p.precio)
+}
+
 ```
 
 ---
@@ -480,4 +679,11 @@ console.print(nums) // [2, 5, 8]
 var total = 0
 3.times(() => total = total + 2)
 console.print(total) // 6
+
+method incrementarTotal() {
+	var total = 0
+	3.times(() => total = total + 2)
+	return total
+}
+
 ```
