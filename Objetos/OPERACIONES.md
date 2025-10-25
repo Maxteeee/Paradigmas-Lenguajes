@@ -1,30 +1,3 @@
-En Wollok, los conjuntos de objetos se llaman colecciones. Son objetos con referencias a otros objetos y pueden recibir mensajes como cualquier otro objeto. Esto permite trabajar de forma declarativa con abstracciones de alto nivel.
-
-# Modelar conjuntos
-
-- A los conjuntos les decimos **COLECCIONES**
-- Son **objetos** con **referencias** a otros objetos y como son objetos entienden mensajes
-- Nos permiten trabajar de forma declarativa con abstracciones de alto nivel
-
-Seria algo como
-> ANIMALES (conjunto, un objeto en si) --> apunta a varios animales (otros objetos) --> gallinas/vacas/cerdos/jabalies
-
-# Tipos de colecciones
-Hay 2 tipos de colecciones importantes, list y set
-
-## LIST
-
-Son listas
-- Se construyen con: [] o new List()
-- Admiten repetidos
-- Tienen un orden (posicion)
-
-## SET
-
-- Se construyen con: #{} o new Set()
-- No tienen repetidos
-- No tienen orden
-
 # Operaciones sin efecto sobre listas y colecciones en Wollok
 
 Aca vamos a explicar las operaciones que se pueden realizar sobre listas o colecciones en Wollok y que **no modifican** la colección original. Estas operaciones permiten consultar, transformar o derivar información sin alterar los datos originales.
