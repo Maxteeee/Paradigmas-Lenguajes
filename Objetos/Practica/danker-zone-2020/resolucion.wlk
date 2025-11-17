@@ -1,6 +1,7 @@
 class Empleado {
     var salud
-    var habilidades = []
+    var habilidades = #{} //set no admite repetidos
+
     var property puesto 
 
     method estaIncapacitado() = salud < self.saludCritica()
@@ -17,8 +18,20 @@ class Empleado {
         salud = salud - cantidad
     }
 
-    method completarMision(mision) {
-      
+    method finalizarMision(mision) {
+      if (self.estaVivo()) {
+        self.completarMision(mision)
+      } 
+    }
+
+    method estaVivo() = salud > 0 
+
+    method completarMision(mision){
+        puesto.completarMision(mision, self)
+    }
+
+    method aprenderHabilidad(habilidad){
+        habilidades.add(habilidad)
     }
 }
 
@@ -27,12 +40,16 @@ class Jefe inherits Empleado {
 
     override method poseeHabilidad(habilidad) = super(habilidad) or self.habilidadSubordinado(habilidad)
 
-    method habilidadSubordinado(habilidad) = subordinados.any{subordinado => subordinado.puedeUsarHabilidad(habilidad)}
+    method habilidadSubordinado(habilidad) = subordinados.any{subordinado => subordinado.poseeHabilidad(habilidad)}
 
 }
 
 class PuestoEspia {
     method saludCritica() = 15
+
+    method completarMision(mision, empleado){
+        mision.enseniarHabilidades(empleado)
+    }
 }
 
 
@@ -44,17 +61,27 @@ class PuestoOficinista {
     }
 
     method saludCritica() = 40 - 5 * estrellas
-}
 
+    method completarMision(mision, empleado){
+        estrellas = estrellas + 1  
+        if (estrellas == 3) {
+            empleado.puesto(PuestoEspia) 
+            //Puedo hacer esto porque puesto en empleado es Property
+            // No rompe el encapsulamiento del empleado porque estoy ya en un puesto y los puestos saben que son puestos}
+            // Esta naturalmente acoplado desde antes por eso no pasa nada
+            // Esto ya es una discucion de diseño, no del paradigma 
+        } 
+    }
+}
+        
 class Mision {
     var habilidadesRequeridas = []
     var peligrosidad
 
-    method serCumplicaPor(asignado) {
+    method serCumplidaPor(asignado) {
         self.validarHabilidades(asignado)
         asignado.recibirDanio(peligrosidad) // Error grave preguntarme con If si es emplado o equipo.
-        asignado.completarMision(self)
-         
+        asignado.finalizarMision(self)
     }
 
     method validarHabilidades(asignado) {
@@ -66,5 +93,25 @@ class Mision {
     method reuneHabilidadesRequeridas(asignado) = 
         habilidadesRequeridas.all{habilidad => asignado.puedeUsarHabilidad(habilidad)}
     
+    method enseniarHabilidades(empleado){
+        self.habilidadesQueNoPosee(empleado).forEach({habilidad => empleado.aprenderHabilidad(habilidad)})
+    }
+
+    method habilidadesQueNoPosee(empleado) = 
+        habilidadesRequeridas.filter({habilidad => not empleado.poseeHabilidad(habilidad)})
+}
+
+class Equipos {
+    var empleados = []
+
+    method puedeUsarHabilidad(habilidad) = empleados.any({empleado => empleado.puedeUsarHabilidad(habilidad)})
+    
+    method recibirDanio(cantidad) {
+        empleados.forEach({empleado => empleado.recibirDanio(cantidad / 3)})
+    }
+    
+    method finalizarMision(mision){
+        empleados.forEach({empleado => empleado.finalizarMision(mision)})
+    }
 }
 
