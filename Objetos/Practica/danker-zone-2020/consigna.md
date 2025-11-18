@@ -26,6 +26,3 @@ Por último, los empleados que sobreviven al finalizar la misión (por tener sal
 - Los espías aprenden las habilidades de la misión que no poseían.
 
 
-
-# Diagrama de clases hasta el momento
-
