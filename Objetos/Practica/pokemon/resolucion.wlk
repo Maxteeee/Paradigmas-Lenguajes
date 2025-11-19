@@ -22,22 +22,21 @@ class Pokemon {
 
     method usarMovimiento(movimiento, contricante) {
         movimiento.gastar()
-        contrincante.aplicarEfecto(movimiento)
+        contricante.aplicarEfecto(movimiento)
     }
 
     method aplicarEfecto(movimiento){
-        movmiento.efecto(self) //cada movimiento va a diseñar su efecto
+        movimiento.efecto(self) //cada movimiento va a diseñar su efecto
     }
 }
 
 //////// MOVIMIENTOS
 
 class Movimiento {
-     const usoLimite
+    const usoLimite
 
-    method gastar() {
-        return usoLimite -= 1
-    }
+    method gastar() = usoLimite -= 1
+    
 
 }
 
