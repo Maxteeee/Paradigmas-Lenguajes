@@ -15,5 +15,14 @@ Ej con mi parcial
 5. Resultado final: false.
 6. Conclusión: No te devolvió ningún paciente complicado. Te dijo "Falso" porque existe alguien que no está complicado.
 
+# Forall
+
+A la izquierda del forall va el generador, el universo de existentes 
+
+Ej: Quienes tienen que estar de acuerdo? Los caballos ganadores
+
+a la derecha va la prueba, la condicion
+
+Ej: Que tienen que hacer? Preferir al jockey
 
 
