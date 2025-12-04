@@ -288,7 +288,7 @@ false. % Pedro rompió la regla
 A diferencia del member, si el forall en la condicion ponemos una lista vacia o un predicado donde NINGUNO cumple. Como no hay elementos que contradigan la condicion sera siempre verdadero.
 Recordar la tabla de valores, si el antecedente era falso el condicional era verdadero.
 
-## findall(Formato, Consulta, Lista)
+## findall(QueQuieroJuntar, ConsultaParaConseguirlo, ListaResultado).
 
 Ejecuta la CONSULTA y recolecta todas las solcuiones de la variable/estructura dada en FORMATO en una LISTA
 
