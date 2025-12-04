@@ -56,7 +56,7 @@ Contar los elementos de una lista
 contar([], 0). % Caso base
 contar( [ _ | T ], N) :-
     contar(T, N1),
-    N is N1 + 1.
+    N is 1 + N1
 ```
 
 Consultamos
